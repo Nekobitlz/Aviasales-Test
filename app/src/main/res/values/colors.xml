@@ -20,8 +20,8 @@
     <color name="colorAccent">@color/colorYellow</color>
 
     <!-- Text colors -->
-    <color name="colorTextMain">@color/colorGreyDark</color>
-    <color name="colorTextSecondary">@color/colorGrey</color>
+    <color name="colorTextMain">@color/colorBlack</color>
+    <color name="colorTextSecondary">@color/colorGreyDark</color>
     <color name="colorTextAccent">@color/colorWhite</color>
 
     <!-- Elements colors -->
