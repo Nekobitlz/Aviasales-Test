@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small_8"
+        android:layout_marginEnd="@dimen/spacing_small_8"
+        app:cardBackgroundColor="@color/colorCardBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:layout_marginBottom="@dimen/spacing_normal_16"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_first_dist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal_16"
+                android:drawableStart="@drawable/ic_place_blue_24dp"
+                android:drawablePadding="@dimen/spacing_normal_16"
+                android:textColor="@color/colorTextMain"
+                app:layout_constraintBottom_toBottomOf="@id/tv_first_dist_short"
+                app:layout_constraintEnd_toStartOf="@id/tv_first_dist_short"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_first_dist_short"
+                tools:text="London" />
+
+            <TextView
+                android:id="@+id/tv_first_dist_short"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_normal_16"
+                android:textColor="@color/colorTextSecondary"
+                app:layout_constraintBottom_toTopOf="@id/ib_swap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_first_dist"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="LON" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/divider_size_1"
+                android:layout_marginStart="@dimen/divider_margin_40"
+                android:layout_marginEnd="@dimen/spacing_normal_16"
+                android:background="@color/colorDivider"
+                app:layout_constraintBottom_toTopOf="@id/tv_second_dist"
+                app:layout_constraintEnd_toStartOf="@+id/ib_swap"
+                app:layout_constraintStart_toStartOf="@+id/tv_first_dist"
+                app:layout_constraintTop_toBottomOf="@id/tv_first_dist" />
+
+            <ImageButton
+                android:id="@+id/ib_swap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small_8"
+                android:layout_marginBottom="@dimen/spacing_small_8"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/cd_swap_button"
+                android:src="@drawable/ic_swap_vert_blue_24dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_second_dist_short"
+                app:layout_constraintEnd_toEndOf="@id/tv_second_dist_short"
+                app:layout_constraintStart_toStartOf="@id/tv_first_dist_short"
+                app:layout_constraintTop_toBottomOf="@id/tv_first_dist_short" />
+
+            <TextView
+                android:id="@+id/tv_second_dist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_place_blue_24dp"
+                android:drawablePadding="@dimen/spacing_normal_16"
+                android:textColor="@color/colorTextMain"
+                app:layout_constraintBottom_toBottomOf="@id/tv_second_dist_short"
+                app:layout_constraintEnd_toEndOf="@id/tv_second_dist_short"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/tv_first_dist"
+                app:layout_constraintTop_toTopOf="@id/tv_second_dist_short"
+                tools:text="Paris" />
+
+            <TextView
+                android:id="@+id/tv_second_dist_short"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/tv_first_dist_short"
+                app:layout_constraintStart_toStartOf="@id/tv_first_dist_short"
+                app:layout_constraintTop_toBottomOf="@id/ib_swap"
+                tools:text="PAR" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_search_size_60"
+        android:layout_marginStart="@dimen/spacing_small_8"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:layout_marginEnd="@dimen/spacing_small_8"
+        android:background="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/search_btn"
+        android:textColor="@color/colorTextAccent"
+        app:rippleColor="@color/colorRipple" />
+
+</LinearLayout>

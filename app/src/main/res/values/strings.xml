@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Aviasales</string>
+
+    <!-- Buttons text -->
+    <string name="search_btn">Search</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_swap_button">Swap button</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- PALETTE -->
+    <color name="colorBlue">#3E83F1</color>
+    <color name="colorBlueLight">#4C97D6</color>
+    <color name="colorYellow">#FFA400</color>
+    <color name="colorYellowLight">#FFC107</color>
+
+    <color name="colorGrey">#969696</color>
+    <color name="colorGreyLight">#ABABAB</color>
+    <color name="colorGreyDark">#494949</color>
+
+    <color name="colorBlack">#000</color>
+    <color name="colorWhite">#FFF</color>
+
+    <!-- Application colors -->
+    <color name="colorPrimary">@color/colorBlueLight</color>
+    <color name="colorPrimaryDark">@color/colorBlue</color>
+    <color name="colorAccent">@color/colorYellow</color>
+
+    <!-- Text colors -->
+    <color name="colorTextMain">@color/colorGreyDark</color>
+    <color name="colorTextSecondary">@color/colorGrey</color>
+    <color name="colorTextAccent">@color/colorWhite</color>
+
+    <!-- Elements colors -->
+    <color name="colorDivider">@color/colorGreyLight</color>
+    <color name="colorCardBackground">@color/colorWhite</color>
+    <color name="colorRipple">@color/colorYellowLight</color>
+
+</resources>
