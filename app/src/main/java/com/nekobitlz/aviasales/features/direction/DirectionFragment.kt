@@ -1,4 +1,4 @@
-package com.nekobitlz.aviasales.features.search
+package com.nekobitlz.aviasales.features.direction
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -11,14 +11,15 @@ import androidx.core.animation.addListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.nekobitlz.aviasales.R
-import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.fragment_direction.*
 
-class SearchFragment : Fragment() {
+class DirectionFragment : Fragment() {
 
-    private val viewModel: SearchViewModel by activityViewModels()
+    private val viewModel: DirectionViewModel by activityViewModels()
 
     companion object {
-        fun newInstance(): SearchFragment = SearchFragment()
+        fun newInstance(): DirectionFragment =
+            DirectionFragment()
     }
 
     override fun onCreateView(
@@ -26,7 +27,7 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return inflater.inflate(R.layout.fragment_direction, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,8 +1,8 @@
-package com.nekobitlz.aviasales.features.search
+package com.nekobitlz.aviasales.features.direction
 
 import androidx.lifecycle.ViewModel
 
-class SearchViewModel : ViewModel() {
+class DirectionViewModel : ViewModel() {
 
     fun onDirectionFromClicked() {
     }
