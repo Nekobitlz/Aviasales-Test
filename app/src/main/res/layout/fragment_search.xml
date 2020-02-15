@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_first_dist"
+                android:id="@+id/tv_direction_from"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_normal_16"
@@ -31,14 +31,14 @@
                 android:drawablePadding="@dimen/spacing_normal_16"
                 android:textColor="@color/colorTextMain"
                 android:textSize="@dimen/font_normal_16"
-                app:layout_constraintBottom_toBottomOf="@id/tv_first_dist_short"
-                app:layout_constraintEnd_toStartOf="@id/tv_first_dist_short"
+                app:layout_constraintBottom_toBottomOf="@id/tv_direction_from_short"
+                app:layout_constraintEnd_toStartOf="@id/tv_direction_from_short"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_first_dist_short"
+                app:layout_constraintTop_toTopOf="@id/tv_direction_from_short"
                 tools:text="London" />
 
             <TextView
-                android:id="@+id/tv_first_dist_short"
+                android:id="@+id/tv_direction_from_short"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/spacing_normal_16"
@@ -46,7 +46,7 @@
                 android:textSize="@dimen/font_small_14"
                 app:layout_constraintBottom_toTopOf="@id/ib_swap"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_first_dist"
+                app:layout_constraintStart_toEndOf="@id/tv_direction_from"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="LON" />
 
@@ -56,10 +56,10 @@
                 android:layout_marginStart="@dimen/divider_margin_40"
                 android:layout_marginEnd="@dimen/spacing_normal_16"
                 android:background="@color/colorDivider"
-                app:layout_constraintBottom_toTopOf="@id/tv_second_dist"
+                app:layout_constraintBottom_toTopOf="@id/tv_direction_to"
                 app:layout_constraintEnd_toStartOf="@+id/ib_swap"
-                app:layout_constraintStart_toStartOf="@+id/tv_first_dist"
-                app:layout_constraintTop_toBottomOf="@id/tv_first_dist" />
+                app:layout_constraintStart_toStartOf="@+id/tv_direction_from"
+                app:layout_constraintTop_toBottomOf="@id/tv_direction_from" />
 
             <ImageButton
                 android:id="@+id/ib_swap"
@@ -70,35 +70,35 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/cd_swap_button"
                 android:src="@drawable/ic_swap_vert_blue_24dp"
-                app:layout_constraintBottom_toTopOf="@id/tv_second_dist_short"
-                app:layout_constraintEnd_toEndOf="@id/tv_second_dist_short"
-                app:layout_constraintStart_toStartOf="@id/tv_first_dist_short"
-                app:layout_constraintTop_toBottomOf="@id/tv_first_dist_short" />
+                app:layout_constraintBottom_toTopOf="@id/tv_direction_to_short"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_to_short"
+                app:layout_constraintStart_toStartOf="@id/tv_direction_from_short"
+                app:layout_constraintTop_toBottomOf="@id/tv_direction_from_short" />
 
             <TextView
-                android:id="@+id/tv_second_dist"
+                android:id="@+id/tv_direction_to"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_place_blue_24dp"
                 android:drawablePadding="@dimen/spacing_normal_16"
                 android:textColor="@color/colorTextMain"
                 android:textSize="@dimen/font_normal_16"
-                app:layout_constraintBottom_toBottomOf="@id/tv_second_dist_short"
-                app:layout_constraintEnd_toEndOf="@id/tv_second_dist_short"
+                app:layout_constraintBottom_toBottomOf="@id/tv_direction_to_short"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_to_short"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/tv_first_dist"
-                app:layout_constraintTop_toTopOf="@id/tv_second_dist_short"
+                app:layout_constraintStart_toStartOf="@id/tv_direction_from"
+                app:layout_constraintTop_toTopOf="@id/tv_direction_to_short"
                 tools:text="Paris" />
 
             <TextView
-                android:id="@+id/tv_second_dist_short"
+                android:id="@+id/tv_direction_to_short"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextSecondary"
                 android:textSize="@dimen/font_small_14"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/tv_first_dist_short"
-                app:layout_constraintStart_toStartOf="@id/tv_first_dist_short"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_short"
+                app:layout_constraintStart_toStartOf="@id/tv_direction_from_short"
                 app:layout_constraintTop_toBottomOf="@id/ib_swap"
                 tools:text="PAR" />
 
