@@ -1,26 +1,25 @@
 package com.nekobitlz.aviasales.features.direction
 
-import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.animation.addListener
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.nekobitlz.aviasales.R
+import com.nekobitlz.aviasales.di.injector
+import com.nekobitlz.aviasales.features.direction.di.DirectionComponent
+import com.nekobitlz.aviasales.features.search.SearchFragment
+import com.nekobitlz.aviasales.router.Router
 import kotlinx.android.synthetic.main.fragment_direction.*
 
-class DirectionFragment : Fragment() {
+class DirectionFragment : Fragment(), DirectionComponent by injector.directionModule {
 
-    private val viewModel: DirectionViewModel by activityViewModels()
-
-    companion object {
-        fun newInstance(): DirectionFragment =
-            DirectionFragment()
-    }
+    private lateinit var viewModel: DirectionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,12 +30,34 @@ class DirectionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initViewModel()
+        initViews()
+    }
 
-        tv_direction_from.text = "London"
-        tv_direction_from_short.text = "LON"
-        tv_direction_to.text = "Paris"
-        tv_direction_to_short.text = "PAR"
+    override fun onDetach() {
+        onCitySelectedListener = null
+        super.onDetach()
+    }
 
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this).get(DirectionViewModel::class.java)
+
+        viewModel.getDirectionFrom().observe(viewLifecycleOwner, Observer {
+            tv_direction_from.text = it.cityName
+            tv_direction_from_country_code.text = it.countryCode
+        })
+        viewModel.getDirectionTo().observe(viewLifecycleOwner, Observer {
+            tv_direction_to.text = it.cityName
+            tv_direction_to_country_code.text = it.countryCode
+        })
+        viewModel.getRouter().observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.perform(SearchFragment(), Router)
+        })
+
+        onCitySelectedListener = viewModel
+    }
+
+    private fun initViews() {
         tv_direction_from.setOnClickListener {
             viewModel.onDirectionFromClicked()
         }
