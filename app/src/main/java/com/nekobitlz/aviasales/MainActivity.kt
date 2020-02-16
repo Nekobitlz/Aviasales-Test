@@ -2,7 +2,9 @@ package com.nekobitlz.aviasales
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.nekobitlz.aviasales.features.search.SearchFragment
+import com.nekobitlz.aviasales.features.direction.DirectionFragment
+import com.nekobitlz.aviasales.router.Router
+import com.nekobitlz.aviasales.router.command.ActivityCommand
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,11 +12,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Router.setActivity(this)
+
         if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.container, SearchFragment.newInstance(), null)
-                .commit()
+            ActivityCommand().perform(DirectionFragment(), Router)
         }
     }
 }
