@@ -22,7 +22,7 @@
             android:layout_marginBottom="@dimen/spacing_normal_16"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_direction_from"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -31,14 +31,14 @@
                 android:drawablePadding="@dimen/spacing_normal_16"
                 android:textColor="@color/colorTextMain"
                 android:textSize="@dimen/font_normal_16"
-                app:layout_constraintBottom_toBottomOf="@id/tv_direction_from_short"
-                app:layout_constraintEnd_toStartOf="@id/tv_direction_from_short"
+                app:layout_constraintBottom_toBottomOf="@id/tv_direction_from_country_code"
+                app:layout_constraintEnd_toStartOf="@id/tv_direction_from_country_code"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_direction_from_short"
+                app:layout_constraintTop_toTopOf="@id/tv_direction_from_country_code"
                 tools:text="London" />
 
-            <TextView
-                android:id="@+id/tv_direction_from_short"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_direction_from_country_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/spacing_normal_16"
@@ -70,12 +70,12 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/cd_swap_button"
                 android:src="@drawable/ic_swap_vert_blue_24dp"
-                app:layout_constraintBottom_toTopOf="@id/tv_direction_to_short"
-                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_short"
-                app:layout_constraintStart_toStartOf="@id/tv_direction_from_short"
-                app:layout_constraintTop_toBottomOf="@id/tv_direction_from_short" />
+                app:layout_constraintBottom_toTopOf="@id/tv_direction_to_country_code"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_country_code"
+                app:layout_constraintStart_toStartOf="@id/tv_direction_from_country_code"
+                app:layout_constraintTop_toBottomOf="@id/tv_direction_from_country_code" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_direction_to"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -83,22 +83,22 @@
                 android:drawablePadding="@dimen/spacing_normal_16"
                 android:textColor="@color/colorTextMain"
                 android:textSize="@dimen/font_normal_16"
-                app:layout_constraintBottom_toBottomOf="@id/tv_direction_to_short"
-                app:layout_constraintEnd_toEndOf="@id/tv_direction_to_short"
+                app:layout_constraintBottom_toBottomOf="@id/tv_direction_to_country_code"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_to_country_code"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/tv_direction_from"
-                app:layout_constraintTop_toTopOf="@id/tv_direction_to_short"
+                app:layout_constraintTop_toTopOf="@id/tv_direction_to_country_code"
                 tools:text="Paris" />
 
-            <TextView
-                android:id="@+id/tv_direction_to_short"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_direction_to_country_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextSecondary"
                 android:textSize="@dimen/font_small_14"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_short"
-                app:layout_constraintStart_toStartOf="@id/tv_direction_from_short"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_country_code"
+                app:layout_constraintStart_toStartOf="@id/tv_direction_from_country_code"
                 app:layout_constraintTop_toBottomOf="@id/ib_swap"
                 tools:text="PAR" />
 
@@ -116,7 +116,7 @@
         android:background="@color/colorAccent"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/search_btn"
-        android:textColor="@color/colorTextAccent"
+        android:textColor="@color/colorSearchTextColor"
         app:rippleColor="@color/colorRipple" />
 
 </LinearLayout>
