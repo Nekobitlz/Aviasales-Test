@@ -50,45 +50,45 @@ class DirectionFragment : Fragment() {
         }
 
         ib_swap.setOnClickListener {
-            viewModel.onSwapClicked()
-            initSwapAnimation()
+            animateSwap()
         }
     }
 
-    private fun initSwapAnimation() {
-        val directionFrom = tv_direction_from.text
-        val directionFromShort = tv_direction_from_short.text
+    private fun animateSwap() {
+        val anim1 = createObjectAnimator(tv_direction_from, 1.0f, 0.0f)
+        val anim2 = createObjectAnimator(tv_direction_to, 1.0f, 0.0f)
+        val anim3 = createObjectAnimator(tv_direction_from_country_code, 1.0f, 0.0f)
+        val anim4 = createObjectAnimator(tv_direction_to_country_code, 1.0f, 0.0f)
 
-        val anim1 = createObjectAnimator(tv_direction_from, 1.0f, 0.0f) {
-            tv_direction_from.text = tv_direction_to.text
-            createObjectAnimator(tv_direction_from, 0.0f, 1.0f).apply { start() }
-        }
-
-        val anim2 = createObjectAnimator(tv_direction_to, 1.0f, 0.0f) {
-            tv_direction_to.text = directionFrom
-            createObjectAnimator(tv_direction_to, 0.0f, 1.0f).apply { start() }
-        }
-
-        val anim3 = createObjectAnimator(tv_direction_from_short, 1.0f, 0.0f) {
-            tv_direction_from_short.text = tv_direction_to_short.text
-            createObjectAnimator(tv_direction_from_short, 0.0f, 1.0f).apply { start() }
-        }
-
-        val anim4 = createObjectAnimator(tv_direction_to_short, 1.0f, 0.0f) {
-            tv_direction_to_short.text = directionFromShort
-            createObjectAnimator(tv_direction_to_short, 0.0f, 1.0f).apply { start() }
-        }
+        val anim5 = createObjectAnimator(tv_direction_from, 0.0f, 1.0f)
+        val anim6 = createObjectAnimator(tv_direction_to, 0.0f, 1.0f)
+        val anim7 = createObjectAnimator(tv_direction_from_country_code, 0.0f, 1.0f)
+        val anim8 = createObjectAnimator(tv_direction_to_country_code, 0.0f, 1.0f)
 
         AnimatorSet().apply {
             playTogether(anim1, anim2, anim3, anim4)
             start()
+            doOnEnd {
+                viewModel.onSwapClicked(
+                    tv_direction_from.text as String,
+                    tv_direction_from_country_code.text as String,
+                    tv_direction_to.text as String,
+                    tv_direction_to_country_code.text as String
+                )
+
+                playTogether(anim5, anim6, anim7, anim8)
+                start()
+            }
         }
     }
 
-    private fun createObjectAnimator(view: View, fromValue: Float, toValue: Float, listener: (Animator) -> Unit = {}): ObjectAnimator {
+    private fun createObjectAnimator(
+        view: View,
+        fromValue: Float,
+        toValue: Float
+    ): ObjectAnimator {
         return ObjectAnimator.ofFloat(view, "alpha", fromValue, toValue).apply {
             duration = 300
-            addListener(listener)
         }
     }
 }
