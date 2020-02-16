@@ -40,7 +40,7 @@ class CityViewHolder(itemView: View, private val onClick: (City) -> Unit) :
         itemView.apply {
             tv_city_name.text = city.cityName
             tv_country_name.text = city.countryName
-            tv_country_code.text = city.countryCode
+            tv_country_code.text = city.getCityCode()
             setOnClickListener { onClick(city) }
         }
     }

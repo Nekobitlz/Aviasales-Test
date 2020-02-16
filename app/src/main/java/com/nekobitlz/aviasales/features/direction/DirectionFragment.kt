@@ -47,11 +47,11 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
 
         viewModel.getDirectionFrom().observe(viewLifecycleOwner, Observer {
             tv_direction_from.text = it.cityName
-            tv_direction_from_country_code.text = it.countryCode
+            tv_direction_from_country_code.text = it.getCityCode()
         })
         viewModel.getDirectionTo().observe(viewLifecycleOwner, Observer {
             tv_direction_to.text = it.cityName
-            tv_direction_to_country_code.text = it.countryCode
+            tv_direction_to_country_code.text = it.getCityCode()
         })
         viewModel.getRouter().observe(viewLifecycleOwner, Observer {
             when (it.peekContent()) {

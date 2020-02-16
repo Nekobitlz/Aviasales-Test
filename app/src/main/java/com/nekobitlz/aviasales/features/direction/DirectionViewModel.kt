@@ -31,8 +31,8 @@ class DirectionViewModel : ViewModel(), OnCitySelectedListener {
     fun getRouter(): LiveData<SingleEvent<RouterCommand>> = router
 
     init {
-        directionFrom.value = City(cityName = "London", countryCode = "GB", location = Location(51.500729,-0.124627))
-        directionTo.value = City(cityName = "Paris", countryCode = "FR", location = Location(48.85634,2.342587))
+        directionFrom.value = City(cityName = "London", iata = listOf("LON"), location = Location(51.500729,-0.124627))
+        directionTo.value = City(cityName = "Paris", iata = listOf("PAR"), location = Location(48.85634,2.342587))
     }
 
     override fun onCitySelected(city: City) {
