@@ -13,8 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.nekobitlz.aviasales.R
 import com.nekobitlz.aviasales.di.injector
 import com.nekobitlz.aviasales.features.direction.di.DirectionComponent
+import com.nekobitlz.aviasales.features.map.MapFragment
 import com.nekobitlz.aviasales.features.search.SearchFragment
 import com.nekobitlz.aviasales.router.Router
+import com.nekobitlz.aviasales.router.command.DirectionCommand
+import com.nekobitlz.aviasales.router.command.MapCommand
 import kotlinx.android.synthetic.main.fragment_direction.*
 
 class DirectionFragment : Fragment(), DirectionComponent by injector.directionModule {
@@ -51,7 +54,10 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
             tv_direction_to_country_code.text = it.countryCode
         })
         viewModel.getRouter().observe(viewLifecycleOwner, Observer {
-            it.getContentIfNotHandled()?.perform(SearchFragment(), Router)
+            when (it.peekContent()) {
+                is MapCommand -> it.getContentIfNotHandled()?.perform(MapFragment(), Router)
+                is DirectionCommand -> it.getContentIfNotHandled()?.perform(SearchFragment(), Router)
+            }
         })
 
         onCitySelectedListener = viewModel

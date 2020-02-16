@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.nekobitlz.aviasales.data.models.City
 import com.nekobitlz.aviasales.data.models.Location
 import com.nekobitlz.aviasales.features.listeners.OnCitySelectedListener
+import com.nekobitlz.aviasales.features.map.MapArguments
 import com.nekobitlz.aviasales.router.command.DirectionCommand
+import com.nekobitlz.aviasales.router.command.MapCommand
 import com.nekobitlz.aviasales.router.command.RouterCommand
 import com.nekobitlz.aviasales.utils.SingleEvent
 
@@ -52,6 +54,13 @@ class DirectionViewModel : ViewModel(), OnCitySelectedListener {
     }
 
     fun onSearchClicked() {
+        perform(
+            MapCommand(
+                MapArguments(
+                    Pair(directionFrom.value!!, directionTo.value!!)
+                )
+            )
+        )
     }
 
     fun onSwapClicked() {
