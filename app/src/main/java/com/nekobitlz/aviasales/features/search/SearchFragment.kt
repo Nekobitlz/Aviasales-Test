@@ -42,14 +42,13 @@ class SearchFragment : Fragment(), SearchComponent by injector.searchModule {
 
     private fun initViewModel() {
         viewModel = ViewModelProvider(this, searchViewModelFactory).get(SearchViewModel::class.java)
-        viewModel.let { vm ->
-            vm.getCities().observe(viewLifecycleOwner, Observer {
-                adapter.submitList(it)
-            })
-            vm.getRouter().observe(viewLifecycleOwner, Observer { event ->
-                event.getContentIfNotHandled()?.perform(this, Router)
-            })
-        }
+
+        viewModel.getCities().observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
+        viewModel.getRouter().observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.perform(this, Router)
+        })
     }
 
     private fun initSearchMenu() {
