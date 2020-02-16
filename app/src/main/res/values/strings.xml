@@ -6,4 +6,7 @@
 
     <!-- Content descriptions -->
     <string name="cd_swap_button">Swap button</string>
+
+    <!-- Hints -->
+    <string name="departure">Departure</string>
 </resources>

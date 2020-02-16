@@ -8,25 +8,34 @@
     <color name="colorYellowLight">#FFC107</color>
 
     <color name="colorGrey">#969696</color>
-    <color name="colorGreyLight">#ABABAB</color>
+    <color name="colorGreyLight">#EAF1F1</color>
     <color name="colorGreyDark">#494949</color>
 
     <color name="colorBlack">#000</color>
     <color name="colorWhite">#FFF</color>
 
     <!-- Application colors -->
-    <color name="colorPrimary">@color/colorBlueLight</color>
+    <color name="colorPrimary">@color/colorWhite</color>
     <color name="colorPrimaryDark">@color/colorBlue</color>
     <color name="colorAccent">@color/colorYellow</color>
 
     <!-- Text colors -->
     <color name="colorTextMain">@color/colorBlack</color>
     <color name="colorTextSecondary">@color/colorGreyDark</color>
-    <color name="colorTextAccent">@color/colorWhite</color>
+    <color name="colorTextAccent">@color/colorPrimaryDark</color>
+    <color name="colorSearchTextColor">@color/colorWhite</color>
 
     <!-- Elements colors -->
     <color name="colorDivider">@color/colorGreyLight</color>
     <color name="colorCardBackground">@color/colorWhite</color>
     <color name="colorRipple">@color/colorYellowLight</color>
+    <color name="colorItemBackground">@color/colorWhite</color>
+    <color name="colorSearchBackground">@color/colorGreyLight</color>
+
+    <!-- Toolbar colors -->
+    <color name="toolbarBackground">@color/colorWhite</color>
+    <color name="toolbarTextColor">@color/colorGrey</color>
+    <color name="toolbarTextColorPrimary">@color/colorGreyDark</color>
+    <color name="toolbarTextColorSecondary">@color/colorGreyLight</color>
 
 </resources>
