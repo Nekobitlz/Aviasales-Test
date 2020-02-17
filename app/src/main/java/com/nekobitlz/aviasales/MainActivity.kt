@@ -18,4 +18,9 @@ class MainActivity : AppCompatActivity() {
             ActivityCommand().perform(DirectionFragment(), Router)
         }
     }
+
+    override fun onDestroy() {
+        Router.detachActivity()
+        super.onDestroy()
+    }
 }

@@ -12,29 +12,39 @@ interface IRouter {
 
 object Router : IRouter {
 
-    private lateinit var activity: MainActivity
+    private var activity: MainActivity? = null
 
     override fun openFragment(fragment: Fragment) {
-        activity.supportFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(R.anim.slide_in_up, 0, 0, R.anim.slide_out_down)
-            .add(R.id.container, fragment)
-            .addToBackStack(null)
-            .commit()
+        activity?.let {
+            it.supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_up, 0, 0, R.anim.slide_out_down)
+                .add(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     override fun replaceFragment(fragment: Fragment) {
-        activity.supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container, fragment)
-            .commit()
+        activity?.let {
+            it.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit()
+        }
     }
 
     override fun closeCurrentFragment() {
-        activity.supportFragmentManager.popBackStack()
+        activity?.let {
+            it.supportFragmentManager.popBackStack()
+        }
     }
 
     fun setActivity(activity: MainActivity) {
         this.activity = activity
+    }
+
+    fun detachActivity() {
+        this.activity = null
     }
 }
