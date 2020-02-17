@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nekobitlz.aviasales.data.models.City
+import com.nekobitlz.aviasales.data.models.Location
 import com.nekobitlz.aviasales.features.listeners.OnCitySelectedListener
 import com.nekobitlz.aviasales.router.command.DirectionCommand
 import com.nekobitlz.aviasales.router.command.RouterCommand
@@ -28,8 +29,8 @@ class DirectionViewModel : ViewModel(), OnCitySelectedListener {
     fun getRouter(): LiveData<SingleEvent<RouterCommand>> = router
 
     init {
-        directionFrom.value = City(cityName = "London", countryCode = "LON")
-        directionTo.value = City(cityName = "Paris", countryCode = "PAR")
+        directionFrom.value = City(cityName = "London", countryCode = "GB", location = Location(51.500729,-0.124627))
+        directionTo.value = City(cityName = "Paris", countryCode = "FR", location = Location(48.85634,2.342587))
     }
 
     override fun onCitySelected(city: City) {
