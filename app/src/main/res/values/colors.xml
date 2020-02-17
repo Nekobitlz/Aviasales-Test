@@ -24,6 +24,13 @@
     <color name="colorTextSecondary">@color/colorGreyDark</color>
     <color name="colorTextAccent">@color/colorPrimaryDark</color>
     <color name="colorSearchTextColor">@color/colorWhite</color>
+    <color name="colorMarkerText">@color/colorWhite</color>
+
+    <!-- Toolbar colors -->
+    <color name="toolbarBackground">@color/colorWhite</color>
+    <color name="toolbarTextColor">@color/colorGrey</color>
+    <color name="toolbarTextColorPrimary">@color/colorGreyDark</color>
+    <color name="toolbarTextColorSecondary">@color/colorGreyLight</color>
 
     <!-- Elements colors -->
     <color name="colorDivider">@color/colorGreyLight</color>
@@ -31,11 +38,6 @@
     <color name="colorRipple">@color/colorYellowLight</color>
     <color name="colorItemBackground">@color/colorWhite</color>
     <color name="colorSearchBackground">@color/colorGreyLight</color>
-
-    <!-- Toolbar colors -->
-    <color name="toolbarBackground">@color/colorWhite</color>
-    <color name="toolbarTextColor">@color/colorGrey</color>
-    <color name="toolbarTextColorPrimary">@color/colorGreyDark</color>
-    <color name="toolbarTextColorSecondary">@color/colorGreyLight</color>
+    <color name="colorMarkerCity">@color/colorPrimaryDark</color>
 
 </resources>

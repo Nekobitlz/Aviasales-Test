@@ -1,11 +1,14 @@
 package com.nekobitlz.aviasales.features.map
 
 import android.animation.ObjectAnimator
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -50,8 +53,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initMap(savedInstanceState)
-        initViewModel()
+        if (savedInstanceState != null) {
+            currentAnimationTime = savedInstanceState.getLong(CURRENT_ANIMATION_TIME_KEY)
+        }
+
+        (childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync(this)
+
+        viewModel = ViewModelProvider(this, mapViewModelFactory).get(MapViewModel::class.java)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -78,24 +86,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         marker.position = latLng
     }
 
-    private fun initMap(savedInstanceState: Bundle?) {
-        (childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync(this)
-
-        if (savedInstanceState != null) {
-            currentAnimationTime = savedInstanceState.getLong(CURRENT_ANIMATION_TIME_KEY)
-        }
-    }
-
-    private fun initViewModel() {
-        viewModel = ViewModelProvider(this, mapViewModelFactory).get(MapViewModel::class.java)
-    }
-
     private fun startAnimation(direction: Pair<City, City>) {
         val cityFrom = direction.first.location.toLatLng()
         val cityTo = direction.second.location.toLatLng()
 
         moveCamera(cityFrom, cityTo)
-        addMarkers(cityFrom, cityTo)
+        addMarkers(direction.first, direction.second)
         addPolyline(cityFrom, cityTo)
         animatePlane(cityFrom, cityTo)
     }
@@ -114,19 +110,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         map.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, width, height, padding))
     }
 
-    private fun addMarkers(cityFrom: LatLng, cityTo: LatLng) {
-        addPointMarker(cityFrom)
-        addPointMarker(cityTo)
-        addPlaneMarker(cityFrom, cityTo)
+    private fun addMarkers(cityFrom: City, cityTo: City) {
+        val cityFromLatLng = cityFrom.location.toLatLng()
+        val cityToLatLng = cityTo.location.toLatLng()
+
+        addPointMarker(cityFromLatLng, cityFrom.getCityCode())
+        addPointMarker(cityToLatLng, cityTo.getCityCode())
+        addPlaneMarker(cityFromLatLng, cityToLatLng)
     }
 
-    private fun addPointMarker(latLng: LatLng) {
+    private fun addPointMarker(latLng: LatLng, cityName: String) {
         val marker = MarkerOptions()
             .alpha(MARKER_ALPHA)
-            .icon(
-                BitmapDescriptorFactory.defaultMarker()
-                // TODO Make custom markers
-            )
+            .icon(getCityMarkerIcon(cityName))
             .position(latLng)
 
         map.addMarker(marker)
@@ -171,6 +167,22 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 currentPlayTime = currentAnimationTime
                 start()
             }
+    }
+
+    private fun getCityMarkerIcon(cityName: String): BitmapDescriptor {
+        val view = LayoutInflater.from(context).inflate(R.layout.marker_city, null) as TextView
+        val bitmap = createBitmap(view, cityName)
+
+        view.draw(Canvas(bitmap))
+
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+    private fun createBitmap(view: TextView, cityName: String): Bitmap = with(view) {
+        text = cityName
+        measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
+        layout(0, 0, measuredWidth, measuredHeight)
+        Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
     }
 
     companion object {
