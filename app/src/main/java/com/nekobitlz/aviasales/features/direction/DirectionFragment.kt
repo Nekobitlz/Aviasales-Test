@@ -90,12 +90,7 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
             playTogether(anim1, anim2, anim3, anim4)
             start()
             doOnEnd {
-                viewModel.onSwapClicked(
-                    tv_direction_from.text as String,
-                    tv_direction_from_country_code.text as String,
-                    tv_direction_to.text as String,
-                    tv_direction_to_country_code.text as String
-                )
+                viewModel.onSwapClicked()
 
                 playTogether(anim5, anim6, anim7, anim8)
                 start()

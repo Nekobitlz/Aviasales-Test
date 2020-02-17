@@ -54,14 +54,10 @@ class DirectionViewModel : ViewModel(), OnCitySelectedListener {
     fun onSearchClicked() {
     }
 
-    fun onSwapClicked(
-        cityFrom: String,
-        countryCodeFrom: String,
-        cityTo: String,
-        countryCodeTo: String
-    ) {
-        directionFrom.value = City(cityName = cityTo, countryCode = countryCodeTo)
-        directionTo.value = City(cityName = cityFrom, countryCode = countryCodeFrom)
+    fun onSwapClicked() {
+        val helper = directionFrom.value
+        directionFrom.value = directionTo.value
+        directionTo.value = helper
     }
 
     private fun perform(command: RouterCommand) {
