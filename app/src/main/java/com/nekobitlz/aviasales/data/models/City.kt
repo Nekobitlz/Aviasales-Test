@@ -7,5 +7,5 @@ data class City(
     @SerializedName("city") val cityName: String,
     @SerializedName("country") val countryName: String? = null,
     @SerializedName("countryCode") val countryCode: String,
-    @SerializedName("location") val location: Location? = null
+    @SerializedName("location") val location: Location
 ) : Serializable
