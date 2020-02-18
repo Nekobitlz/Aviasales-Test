@@ -17,9 +17,6 @@ import com.nekobitlz.aviasales.router.Router
 import kotlinx.android.synthetic.main.fragment_search.*
 
 class SearchFragment : Fragment(), SearchComponent by injector.searchModule {
-    // TODO() Item decoration for recycler
-    // TODO() Network error handling
-
     private lateinit var viewModel: SearchViewModel
 
     private val adapter: SearchAdapter by lazy {

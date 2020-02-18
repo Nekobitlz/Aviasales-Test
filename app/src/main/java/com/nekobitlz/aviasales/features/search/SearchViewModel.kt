@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.nekobitlz.aviasales.data.models.City
 import com.nekobitlz.aviasales.data.repositories.ICityRepository
 import com.nekobitlz.aviasales.features.listeners.OnCitySelectedListener
+import com.nekobitlz.aviasales.router.command.ErrorCommand
 import com.nekobitlz.aviasales.router.command.RouterCommand
 import com.nekobitlz.aviasales.router.command.SearchCommand
 import com.nekobitlz.aviasales.utils.SingleEvent
@@ -37,10 +38,9 @@ class SearchViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { success, error ->
                 if (error != null) {
-                    error.printStackTrace()
+                    perform(ErrorCommand(error.message!!))
                 } else {
                     cities.value = success.cities
-
                 }
             })
     }
