@@ -100,8 +100,10 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
             doOnEnd {
                 viewModel.onSwapClicked()
 
-                playTogether(anim5, anim6, anim7, anim8)
-                start()
+                AnimatorSet().apply {
+                    playTogether(anim5, anim6, anim7, anim8)
+                    start()
+                }
             }
         }
     }
