@@ -164,7 +164,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 duration = ANIMATION_TIME
                 currentPlayTime = currentAnimationTime
                 start()
+
+                var previousPosition: LatLng = cityFrom
                 addUpdateListener {
+                    previousPosition = marker.position
                     marker.position = it.animatedValue as LatLng
 
                     val nextPosition = PlaneTypeEvaluator
@@ -176,7 +179,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 }
                 doOnEnd {
                     marker.rotation = SphericalUtil
-                        .computeHeading(cityFrom, cityTo)
+                        .computeHeading(previousPosition, marker.position)
                         .toFloat() - PLANE_ANGLE_OFFSET
                 }
             }
