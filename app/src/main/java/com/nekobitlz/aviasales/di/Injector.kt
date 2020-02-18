@@ -12,8 +12,8 @@ import com.nekobitlz.aviasales.features.search.di.SearchModule
 
 class Injector(context: Context) {
 
-    val applicationModule: ApplicationComponent = ApplicationModule()
-    val directionModule: DirectionComponent = DirectionModule()
+    val applicationModule: ApplicationComponent = ApplicationModule(context)
+    val directionModule: DirectionComponent = DirectionModule(applicationModule)
     val searchModule: SearchComponent = SearchModule(applicationModule, directionModule)
 
     fun getMapModule(args: MapArguments): MapModule = MapModule(args)

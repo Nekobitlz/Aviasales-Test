@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nekobitlz.aviasales.data.models.City
 import com.nekobitlz.aviasales.data.models.Location
+import com.nekobitlz.aviasales.di.providers.IResourceProvider
 import com.nekobitlz.aviasales.features.listeners.OnCitySelectedListener
 import com.nekobitlz.aviasales.features.map.MapArguments
 import com.nekobitlz.aviasales.router.command.DirectionCommand
@@ -13,7 +14,8 @@ import com.nekobitlz.aviasales.router.command.MapCommand
 import com.nekobitlz.aviasales.router.command.RouterCommand
 import com.nekobitlz.aviasales.utils.SingleEvent
 
-class DirectionViewModel : ViewModel(), OnCitySelectedListener {
+class DirectionViewModel(private val resourceProvider: IResourceProvider) : ViewModel(),
+    OnCitySelectedListener {
 
     private val directionFrom by lazy {
         MutableLiveData<City>()
