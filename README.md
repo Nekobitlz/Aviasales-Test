@@ -1,6 +1,6 @@
 # Aviasales Test Task
 
-[LATEST VERSION APK FILE](https://github.com/Nekobitlz/Aviasales-Test/blob/master/apks/Aviasales-1.0.apk)
+[LATEST VERSION APK FILE](https://github.com/Nekobitlz/Aviasales-Test/blob/master/apks/Aviasales-1.0.1.apk)
 
 The task is to make an animation of waiting for the results of the search for airline tickets on a given route.
 
