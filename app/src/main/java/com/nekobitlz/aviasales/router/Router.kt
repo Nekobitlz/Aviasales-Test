@@ -40,6 +40,7 @@ object Router : IRouter {
     override fun closeCurrentFragment() {
         activity?.let {
             it.supportFragmentManager.popBackStack()
+            it.hideKeyboard()
         }
     }
 
