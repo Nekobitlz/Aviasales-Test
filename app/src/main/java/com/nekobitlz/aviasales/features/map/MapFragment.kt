@@ -165,22 +165,20 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 currentPlayTime = currentAnimationTime
                 start()
 
-                var previousPosition: LatLng = cityFrom
                 addUpdateListener {
-                    previousPosition = marker.position
                     marker.position = it.animatedValue as LatLng
 
                     val nextPosition = PlaneTypeEvaluator
                         .evaluateNext(it.animatedFraction, marker.position, cityTo)
 
-                    marker.rotation = SphericalUtil
-                        .computeHeading(marker.position, nextPosition)
-                        .toFloat() - PLANE_ANGLE_OFFSET
+                    if (it.animatedFraction < 1.0f) {
+                        marker.rotation = SphericalUtil
+                            .computeHeading(marker.position, nextPosition)
+                            .toFloat() - PLANE_ANGLE_OFFSET
+                    }
                 }
                 doOnEnd {
-                    marker.rotation = SphericalUtil
-                        .computeHeading(previousPosition, marker.position)
-                        .toFloat() - PLANE_ANGLE_OFFSET
+                    animator.currentPlayTime = ANIMATION_TIME
                 }
             }
     }
