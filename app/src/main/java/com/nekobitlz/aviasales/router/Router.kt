@@ -1,6 +1,8 @@
 package com.nekobitlz.aviasales.router
 
+import android.view.View
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.nekobitlz.aviasales.MainActivity
 import com.nekobitlz.aviasales.R
 
@@ -8,6 +10,7 @@ interface IRouter {
     fun openFragment(fragment: Fragment)
     fun replaceFragment(fragment: Fragment)
     fun closeCurrentFragment()
+    fun showSnackBar(view: View, text: String)
 }
 
 object Router : IRouter {
@@ -38,6 +41,10 @@ object Router : IRouter {
         activity?.let {
             it.supportFragmentManager.popBackStack()
         }
+    }
+
+    override fun showSnackBar(view: View, text: String) {
+        Snackbar.make(view, text, Snackbar.LENGTH_LONG).show()
     }
 
     fun setActivity(activity: MainActivity) {
