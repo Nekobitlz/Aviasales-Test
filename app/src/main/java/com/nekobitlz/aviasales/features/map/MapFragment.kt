@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
+import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -82,10 +83,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         viewModel.onMapReady()
     }
 
-    fun setAnimatedPlane(latLng: LatLng) {
-        marker.position = latLng
-    }
-
     private fun startAnimation(direction: Pair<City, City>) {
         val cityFrom = direction.first.location.toLatLng()
         val cityTo = direction.second.location.toLatLng()
@@ -135,10 +132,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 .flat(true)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_plane))
                 .rotation(
-                    SphericalUtil.computeHeading(
-                        cityFrom,
-                        cityTo
-                    ).toFloat() - PLANE_ICON_ANGLE_OFFSET
+                    SphericalUtil.computeHeading(cityFrom, cityTo).toFloat() - PLANE_ANGLE_OFFSET
                 )
                 .zIndex(Z_INDEX)
                 .anchor(ANCHOR, ANCHOR)
@@ -166,6 +160,24 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 duration = ANIMATION_TIME
                 currentPlayTime = currentAnimationTime
                 start()
+                addUpdateListener {
+                    marker.position = it.animatedValue as LatLng
+                    val nextPosition = PlaneTypeEvaluator.evaluateNext(
+                        it.animatedFraction,
+                        marker.position,
+                        cityTo
+                    )
+                    marker.rotation = SphericalUtil.computeHeading(
+                        marker.position,
+                        nextPosition
+                    ).toFloat() - PLANE_ANGLE_OFFSET
+                }
+                doOnEnd {
+                    marker.rotation = SphericalUtil.computeHeading(
+                        cityFrom,
+                        cityTo
+                    ).toFloat() - PLANE_ANGLE_OFFSET
+                }
             }
     }
 
@@ -190,7 +202,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         private const val ARGUMENTS_KEY = "ARGUMENTS_KEY"
 
         private const val ANIMATOR_PROPERTY_NAME = "animatedPlane"
-        private const val PLANE_ICON_ANGLE_OFFSET = 90f
+        private const val PLANE_ANGLE_OFFSET = 90f
         private const val PADDING_RATE = 0.15f
         private const val Z_INDEX = 1f
         private const val DOT_GAP = 7f
