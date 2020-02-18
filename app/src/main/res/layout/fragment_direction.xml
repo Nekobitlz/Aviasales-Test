@@ -31,17 +31,18 @@
                 android:drawablePadding="@dimen/spacing_normal_16"
                 android:textColor="@color/colorTextMain"
                 android:textSize="@dimen/font_normal_16"
-                app:layout_constraintBottom_toBottomOf="@id/tv_direction_from_country_code"
-                app:layout_constraintEnd_toStartOf="@id/tv_direction_from_country_code"
+                app:layout_constraintBottom_toBottomOf="@id/tv_direction_from_city_code"
+                app:layout_constraintEnd_toStartOf="@id/tv_direction_from_city_code"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_direction_from_country_code"
+                app:layout_constraintTop_toTopOf="@id/tv_direction_from_city_code"
                 tools:text="London" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_direction_from_country_code"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_direction_from_city_code"
+                android:layout_width="@dimen/text_view_city_code_width_40"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/spacing_normal_16"
+                android:gravity="center"
                 android:textColor="@color/colorTextSecondary"
                 android:textSize="@dimen/font_small_14"
                 app:layout_constraintBottom_toTopOf="@id/ib_swap"
@@ -70,10 +71,10 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/cd_swap_button"
                 android:src="@drawable/ic_swap_vert_blue_24dp"
-                app:layout_constraintBottom_toTopOf="@id/tv_direction_to_country_code"
-                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_country_code"
-                app:layout_constraintStart_toStartOf="@id/tv_direction_from_country_code"
-                app:layout_constraintTop_toBottomOf="@id/tv_direction_from_country_code" />
+                app:layout_constraintBottom_toTopOf="@id/tv_direction_to_city_code"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_city_code"
+                app:layout_constraintStart_toStartOf="@id/tv_direction_from_city_code"
+                app:layout_constraintTop_toBottomOf="@id/tv_direction_from_city_code" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_direction_to"
@@ -83,22 +84,23 @@
                 android:drawablePadding="@dimen/spacing_normal_16"
                 android:textColor="@color/colorTextMain"
                 android:textSize="@dimen/font_normal_16"
-                app:layout_constraintBottom_toBottomOf="@id/tv_direction_to_country_code"
-                app:layout_constraintEnd_toEndOf="@id/tv_direction_to_country_code"
+                app:layout_constraintBottom_toBottomOf="@id/tv_direction_to_city_code"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_to_city_code"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/tv_direction_from"
-                app:layout_constraintTop_toTopOf="@id/tv_direction_to_country_code"
+                app:layout_constraintTop_toTopOf="@id/tv_direction_to_city_code"
                 tools:text="Paris" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_direction_to_country_code"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_direction_to_city_code"
+                android:layout_width="@dimen/text_view_city_code_width_40"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:textColor="@color/colorTextSecondary"
                 android:textSize="@dimen/font_small_14"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_country_code"
-                app:layout_constraintStart_toStartOf="@id/tv_direction_from_country_code"
+                app:layout_constraintEnd_toEndOf="@id/tv_direction_from_city_code"
+                app:layout_constraintStart_toStartOf="@id/tv_direction_from_city_code"
                 app:layout_constraintTop_toBottomOf="@id/ib_swap"
                 tools:text="PAR" />
 

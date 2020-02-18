@@ -48,11 +48,11 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
 
         viewModel.getDirectionFrom().observe(viewLifecycleOwner, Observer {
             tv_direction_from.text = it.cityName
-            tv_direction_from_country_code.text = it.getCityCode()
+            tv_direction_from_city_code.text = it.getCityCode()
         })
         viewModel.getDirectionTo().observe(viewLifecycleOwner, Observer {
             tv_direction_to.text = it.cityName
-            tv_direction_to_country_code.text = it.getCityCode()
+            tv_direction_to_city_code.text = it.getCityCode()
         })
         viewModel.getRouter().observe(viewLifecycleOwner, Observer {
             when (it.peekContent()) {
@@ -86,13 +86,13 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
     private fun animateSwap() {
         val anim1 = createObjectAnimator(tv_direction_from, 1.0f, 0.0f)
         val anim2 = createObjectAnimator(tv_direction_to, 1.0f, 0.0f)
-        val anim3 = createObjectAnimator(tv_direction_from_country_code, 1.0f, 0.0f)
-        val anim4 = createObjectAnimator(tv_direction_to_country_code, 1.0f, 0.0f)
+        val anim3 = createObjectAnimator(tv_direction_from_city_code, 1.0f, 0.0f)
+        val anim4 = createObjectAnimator(tv_direction_to_city_code, 1.0f, 0.0f)
 
         val anim5 = createObjectAnimator(tv_direction_from, 0.0f, 1.0f)
         val anim6 = createObjectAnimator(tv_direction_to, 0.0f, 1.0f)
-        val anim7 = createObjectAnimator(tv_direction_from_country_code, 0.0f, 1.0f)
-        val anim8 = createObjectAnimator(tv_direction_to_country_code, 0.0f, 1.0f)
+        val anim7 = createObjectAnimator(tv_direction_from_city_code, 0.0f, 1.0f)
+        val anim8 = createObjectAnimator(tv_direction_to_city_code, 0.0f, 1.0f)
 
         AnimatorSet().apply {
             playTogether(anim1, anim2, anim3, anim4)

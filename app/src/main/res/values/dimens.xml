@@ -18,5 +18,6 @@
     <dimen name="btn_search_size_60">60dp</dimen>
     <dimen name="shape_marker_radius_50">50dp</dimen>
     <dimen name="stroke_marker_width_1">1dp</dimen>
+    <dimen name="text_view_city_code_width_40">40dp</dimen>
 
 </resources>
