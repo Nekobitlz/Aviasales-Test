@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Aviasales</string>
+
+    <!-- Buttons text -->
+    <string name="search_btn">Найти билеты</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_swap_button">Поменять местами направления</string>
+
+    <!-- Hints -->
+    <string name="departure">Откуда вылет</string>
+    <string name="cityFromDefault">Лондон</string>
+    <string name="cityToDefault">Париж</string>
+    <string name="error_same_directions">Выбранные точки не должны быть одинаковыми! Пожалуйста, выберите другое направление</string>
+</resources>
