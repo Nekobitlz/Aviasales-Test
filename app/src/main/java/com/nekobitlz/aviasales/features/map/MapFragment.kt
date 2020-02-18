@@ -143,7 +143,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val polylinePattern = listOf(Dot(), Gap(DOT_GAP))
         val polyline = PolylineOptions().apply {
             add(cityFrom, cityTo)
-            color(ContextCompat.getColor(context!!, R.color.colorPrimaryDark))
+            color(ContextCompat.getColor(context!!, R.color.colorGrey))
             geodesic(false)
             pattern(polylinePattern)
             width(DOT_GAP)
@@ -206,7 +206,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         private const val PADDING_RATE = 0.15f
         private const val Z_INDEX = 1f
         private const val DOT_GAP = 7f
-        private const val MARKER_ALPHA = 0.95f
+        private const val MARKER_ALPHA = 0.9f
         private const val ANCHOR = 0.5f
         private const val ANIMATION_TIME = 10000L
 

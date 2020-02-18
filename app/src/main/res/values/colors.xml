@@ -38,6 +38,6 @@
     <color name="colorRipple">@color/colorYellowLight</color>
     <color name="colorItemBackground">@color/colorWhite</color>
     <color name="colorSearchBackground">@color/colorGreyLight</color>
-    <color name="colorMarkerCity">@color/colorPrimaryDark</color>
+    <color name="colorMarkerCity">@color/colorYellowLight</color>
 
 </resources>

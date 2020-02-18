@@ -17,5 +17,6 @@
     <dimen name="divider_margin_40">40dp</dimen> <!-- 16dp margin + 24dp picture width -->
     <dimen name="btn_search_size_60">60dp</dimen>
     <dimen name="shape_marker_radius_50">50dp</dimen>
+    <dimen name="stroke_marker_width_1">1dp</dimen>
 
 </resources>

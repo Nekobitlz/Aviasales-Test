@@ -2,4 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="@dimen/shape_marker_radius_50" />
     <solid android:color="@color/colorMarkerCity" />
+    <stroke android:color="@color/colorWhite" android:width="@dimen/stroke_marker_width_1" />
 </shape>
