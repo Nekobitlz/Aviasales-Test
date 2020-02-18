@@ -9,4 +9,9 @@
 
     <!-- Hints -->
     <string name="departure">Departure</string>
+    <string name="cityFromDefault">London</string>
+    <string name="cityToDefault">Paris</string>
+    <string name="cityCodeFromDefault" translatable="false">LON</string>
+    <string name="cityCodeToDefault" translatable="false">PAR</string>
+    <string name="error_same_directions">Selected points should not be the same! Please choose another direction</string>
 </resources>

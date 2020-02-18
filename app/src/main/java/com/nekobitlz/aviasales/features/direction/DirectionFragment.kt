@@ -44,7 +44,7 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(DirectionViewModel::class.java)
+        viewModel = ViewModelProvider(this, directionViewModelFactory).get(DirectionViewModel::class.java)
 
         viewModel.getDirectionFrom().observe(viewLifecycleOwner, Observer {
             tv_direction_from.text = it.cityName

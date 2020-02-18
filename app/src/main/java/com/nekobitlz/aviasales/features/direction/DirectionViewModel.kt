@@ -3,6 +3,7 @@ package com.nekobitlz.aviasales.features.direction
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.nekobitlz.aviasales.R
 import com.nekobitlz.aviasales.data.models.City
 import com.nekobitlz.aviasales.data.models.Location
 import com.nekobitlz.aviasales.di.providers.IResourceProvider
@@ -34,8 +35,18 @@ class DirectionViewModel(private val resourceProvider: IResourceProvider) : View
     fun getRouter(): LiveData<SingleEvent<RouterCommand>> = router
 
     init {
-        directionFrom.value = City(id = 7896, cityName = "London", iata = listOf("LON"), location = Location(51.500729,-0.124627))
-        directionTo.value = City(id = 15542, cityName = "Paris", iata = listOf("PAR"), location = Location(48.85634,2.342587))
+        directionFrom.value = City(
+            id = 7896,
+            cityName = resourceProvider.getString(R.string.cityFromDefault),
+            iata = listOf(resourceProvider.getString(R.string.cityCodeFromDefault)),
+            location = Location(51.500729, -0.124627)
+        )
+        directionTo.value = City(
+            id = 15542,
+            cityName = resourceProvider.getString(R.string.cityToDefault),
+            iata = listOf(resourceProvider.getString(R.string.cityCodeToDefault)),
+            location = Location(48.85634, 2.342587)
+        )
     }
 
     override fun onCitySelected(city: City) {
@@ -58,7 +69,7 @@ class DirectionViewModel(private val resourceProvider: IResourceProvider) : View
 
     fun onSearchClicked() {
         if (directionFrom.value!!.id == directionTo.value!!.id) {
-            perform(ErrorCommand("Selected points should not be the same! Please choose another direction"))
+            perform(ErrorCommand(resourceProvider.getString(R.string.error_same_directions)))
         } else {
             perform(
                 MapCommand(
