@@ -17,6 +17,7 @@ import com.nekobitlz.aviasales.features.map.MapFragment
 import com.nekobitlz.aviasales.features.search.SearchFragment
 import com.nekobitlz.aviasales.router.Router
 import com.nekobitlz.aviasales.router.command.DirectionCommand
+import com.nekobitlz.aviasales.router.command.ErrorCommand
 import com.nekobitlz.aviasales.router.command.MapCommand
 import kotlinx.android.synthetic.main.fragment_direction.*
 
@@ -57,6 +58,7 @@ class DirectionFragment : Fragment(), DirectionComponent by injector.directionMo
             when (it.peekContent()) {
                 is MapCommand -> it.getContentIfNotHandled()?.perform(MapFragment(), Router)
                 is DirectionCommand -> it.getContentIfNotHandled()?.perform(SearchFragment(), Router)
+                is ErrorCommand -> it.getContentIfNotHandled()?.perform(this, Router)
             }
         })
 
