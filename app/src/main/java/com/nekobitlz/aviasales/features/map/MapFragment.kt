@@ -14,7 +14,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.SphericalUtil
 import com.nekobitlz.aviasales.R
@@ -76,11 +79,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         this.map = map
 
-        viewModel.getAnimationEvent().observe(viewLifecycleOwner, Observer {
-            startAnimation(it.peekContent())
-        })
-
         viewModel.onMapReady()
+        viewModel.getAnimationEvent().observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let {
+                startAnimation(it)
+            }
+        })
     }
 
     private fun startAnimation(direction: Pair<City, City>) {
@@ -162,21 +166,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 start()
                 addUpdateListener {
                     marker.position = it.animatedValue as LatLng
-                    val nextPosition = PlaneTypeEvaluator.evaluateNext(
-                        it.animatedFraction,
-                        marker.position,
-                        cityTo
-                    )
-                    marker.rotation = SphericalUtil.computeHeading(
-                        marker.position,
-                        nextPosition
-                    ).toFloat() - PLANE_ANGLE_OFFSET
+
+                    val nextPosition = PlaneTypeEvaluator
+                        .evaluateNext(it.animatedFraction, marker.position, cityTo)
+
+                    marker.rotation = SphericalUtil
+                        .computeHeading(marker.position, nextPosition)
+                        .toFloat() - PLANE_ANGLE_OFFSET
                 }
                 doOnEnd {
-                    marker.rotation = SphericalUtil.computeHeading(
-                        cityFrom,
-                        cityTo
-                    ).toFloat() - PLANE_ANGLE_OFFSET
+                    marker.rotation = SphericalUtil
+                        .computeHeading(cityFrom, cityTo)
+                        .toFloat() - PLANE_ANGLE_OFFSET
                 }
             }
     }
